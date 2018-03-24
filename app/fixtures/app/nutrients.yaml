@@ -1,0 +1,30 @@
+- model: app.nutrient
+  pk: 1
+  fields:
+    proteins: 12.6
+    carbohydrates: 0.7
+    fats: 9.5
+    fibers: 0
+    kcals: 143
+    created_at: '2018-03-11 11:02:57'
+    updated_at: '2018-03-11 11:02:57'
+- model: app.nutrient
+  pk: 2
+  fields:
+    proteins: 3.5
+    carbohydrates: 4.8
+    fats: 3.6
+    fibers: 0
+    kcals: 67
+    created_at: '2018-03-11 11:02:57'
+    updated_at: '2018-03-11 11:02:57'
+- model: app.nutrient
+  pk: 3
+  fields:
+    proteins: 22
+    carbohydrates: 0.1
+    fats: 40
+    fibers: 0
+    kcals: 448
+    created_at: '2018-03-11 11:02:57'
+    updated_at: '2018-03-11 11:02:57'
