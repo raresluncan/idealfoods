@@ -50,6 +50,20 @@ class Nutrient(Date):
         validators = [MaxValueValidator(1000), MinValueValidator(0)]
     )
 
+    fibers = DecimalField(
+        default=0.00,
+        max_digits=6,
+        decimal_places=2,
+        validators = [MaxValueValidator(1000), MinValueValidator(0)]
+    )
+
+    kcals = DecimalField(
+        default=0.00,
+        max_digits=7,
+        decimal_places=2,
+        validators = [MaxValueValidator(10000), MinValueValidator(0)]
+    )
+
     class Meta:
         db_table = 'nutrients'
 
@@ -67,7 +81,7 @@ class Ingredient(Date):
         ]
     )
 
-    nutrient = ForeignKey(Nutrient, on_delete=PROTECT, related_name='comments')
+    nutrient = ForeignKey(Nutrient, on_delete=PROTECT, related_name='ingredient')
 
     class Meta:
         db_table = 'ingredients'
