@@ -1,0 +1,14 @@
+*.DS_Store
+*.pyc
+*.bak
+*.db
+
+# virtualenv
+.Python
+bin/
+include/
+lib/
+pip-selfcheck.json
+.env
+
+CACHE/
