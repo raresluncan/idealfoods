@@ -81,7 +81,7 @@ class Ingredient(Date):
         ]
     )
 
-    nutrients = ForeignKey(Nutrient, on_delete=PROTECT, related_name='comments')
+    nutrient = ForeignKey(Nutrient, on_delete=PROTECT, related_name='ingredient')
 
     class Meta:
         db_table = 'ingredients'
