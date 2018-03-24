@@ -1,0 +1,28 @@
+{% load bootstrap3 %}
+
+<!DOCTYPE>
+<html>
+  <head>
+    {% block title %}
+      <title>Idealfoods</title>
+    {% endblock %}
+
+    {% block head_content %}
+      {% bootstrap_css %}
+    {% endblock %}
+  </head>
+
+
+  <body>
+    {% block nav %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block js %}
+      {% bootstrap_javascript jquery=1 %}
+    {% endblock %}
+  </body>
+
+</html>
