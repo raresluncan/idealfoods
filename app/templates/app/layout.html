@@ -5,6 +5,10 @@
   <head>
     {% block title %}
       <title>Idealfoods</title>
+      <!-- <link rel="icon" href="../static/app/images/tab-icon.png"> -->
+      {% bootstrap_css %}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+      <link rel="stylesheet" href="../static/app/css/common.css">
     {% endblock %}
 
     {% block head_content %}
@@ -15,6 +19,7 @@
 
   <body>
     {% block nav %}
+     {% include 'app/partials/navbar.html' %}
     {% endblock %}
 
     {% block content %}

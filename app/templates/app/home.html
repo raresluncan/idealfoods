@@ -1,13 +1,40 @@
 {% extends "app/layout.html" %}
-{% load bootstrap3 %}
-
 
 {% block head_content %}
   {{ block.super }}
+  <link rel="stylesheet" href="../static/app/css/home.css">
 {% endblock %}
 
 {% block content %}
   {{ block.super }}
+  {% include 'app/partials/carousel.html' %}
+  <div class="animated bounceInLeft container">
+    <div class="well well-lg home-main-input">
+      <div class="row vertical-align">
+        <button type="button" class="btn btn-warning btn-lg pull-right">
+          Generate plan
+          <span class="glyphicon glyphicon-chevron-right btn-glyph-after"></span>
+        </button>
+        <div class="home-inputs row vertical-align col-sm-9">
+          <div class="home-main-text pull-left">
+            I want to eat between
+          </div>
+          <div class="form-group pull-left">
+            <input type="text" class="form-control home-input-number">
+          </div>
+          <div class="home-main-text pull-left">
+             -
+          </div>
+          <div class="form-group pull-left">
+            <input type="text" class="form-control home-input-number">
+          </div>
+          <div class="home-main-text pull-left">
+            calories.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block js %}
