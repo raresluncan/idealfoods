@@ -21,14 +21,24 @@
 
 .home-main-input .form-group {
   margin: 0px;
+  height: 34px;
+  max-width: 100px;
 }
 
-.well.well-lg .home-inputs {
-  vertical-align: middle;
+.home-main-input .form-group input {
+  max-width: 80px;
 }
 
-.form-control.home-input-number {
-  max-width: 70px;
+.home-inputs .home-main-text {
+  margin: 0px;
+  text-align: left;
+  padding: 0px;
+  max-width: 124px;
+}
+
+.home-main-text.hyphen-sm-1 {
+  max-width: 10px;
+  text-align: center;
 }
 
 /* viewport for bootstrap 3 xs */
@@ -36,5 +46,10 @@
   .well.well-lg.home-main-input {
     margin-top: 10px;
     z-index: 100;
+  }
+
+  .home-inputs .home-main-text {
+    text-align: center;
+    margin-top: 10px;
   }
 }

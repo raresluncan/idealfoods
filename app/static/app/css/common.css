@@ -20,6 +20,12 @@ html body {
   vertical-align: middle;
 }
 
+.home-inputs .form-group {
+  margin: 0;
+  padding: 0;
+}
+
+
 .btn.btn-warning {
   color: #ffffff;
   background-color: #F0AD4E;
