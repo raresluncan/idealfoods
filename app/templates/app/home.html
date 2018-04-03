@@ -1,0 +1,43 @@
+{% extends "app/layout.html" %}
+
+{% block head_content %}
+  {{ block.super }}
+  <link rel="stylesheet" href="../static/app/css/home.css">
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+  {% include 'app/partials/carousel.html' %}
+  <div class="animated bounceInLeft">
+    <div class="container well well-lg home-main-input">
+      <div class="container home-inputs col-xs-12 col-sm-9">
+        <div class="home-main-text col-xs-12 col-sm-3 my-auto">
+          <span>I want to eat between</span>
+        </div>
+        <div class="home-input col-xs-12 col-sm-3">
+          <input type="text" maxlength="5" class="form-control text-center home-input-number-min">
+        </div>
+        <div class="home-main-text col-xs-12 col-sm-1 hyphen-sm-1">
+          -
+        </div>
+        <div class="home-input col-xs-12 col-sm-3">
+          <input type="text" maxlength="5" class="form-control text-center home-input-number-max ">
+        </div>
+        <div class="home-main-text col-xs-12 col-sm-1">
+          calories.
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <button type="button" class="btn btn-warning btn-lg">
+          Generate plan
+          <span class="glyphicon glyphicon-chevron-right btn-glyph-after"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  {{ block.super}}
+{% endblock %}
+

@@ -1,0 +1,40 @@
+html body {
+  background-color: #F2F2F2;
+}
+
+.glyphicon.btn-glyph {
+  margin-right: 10px;
+}
+
+.glyphicon.btn-glyph-after {
+  margin-left: 5px;
+  margin-top: -15px;
+  font-weight: bolder;
+}
+
+.navbar.navbar-default {
+  margin-bottom: 0px;
+}
+
+.home-main-input .row {
+  vertical-align: middle;
+}
+
+.home-inputs .form-group {
+  margin: 0;
+  padding: 0;
+}
+
+.btn.btn-warning {
+  color: #ffffff;
+  background-color: #F0AD4E;
+  background-image: linear-gradient(to bottom, #F0AD4E, #EB9316);
+  border-color: #E38D13 #E38D13 #E38D13;
+}
+
+.btn.btn-warning:hover {
+  color: #ffffff;
+  background-color: #EB9316;
+  background-image: linear-gradient(to bottom, #EB9316, #EB9316);
+  border-color: #E38D13 #E38D13 #E38D13;
+}

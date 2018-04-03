@@ -1,0 +1,60 @@
+#home-carousel .item {
+  max-height: 400px;
+  z-index: -100;
+}
+
+.well.well-lg.home-main-input {
+  margin-top: -30px;
+  z-index: 100;
+  -webkit-box-shadow: 0px 5px 11px -2px rgba(0,0,0,0.24);
+  -moz-box-shadow: 0px 5px 11px -2px rgba(0,0,0,0.24);
+  box-shadow: 0px 5px 11px -2px rgba(0,0,0,0.24);
+  background-color: white;
+}
+
+.well.well-lg .home-main-text {
+  font-size: 12px;
+  font-weight: bolder;
+  color: #555;
+  margin: 0 10px 0 10px;
+}
+
+.home-inputs .form-group {
+  margin: 0px;
+  height: 34px;
+  max-width: 100px;
+}
+
+.home-inputs input {
+  max-width: 80px
+}
+
+.home-inputs .home-input {
+  padding: 0px;
+  margin: 0 10px 0 10px;
+  max-width: 80px;
+}
+
+.home-main-input .home-inputs .home-main-text {
+  margin: 7 0 0 0;
+  padding: 0px;
+  max-width: 124px;
+}
+
+.home-inputs .home-main-text.hyphen-sm-1 {
+  max-width: 10px;
+  text-align: center;
+}
+
+/* viewport for bootstrap 3 xs */
+@media (max-width: 764px) {
+  .well.well-lg.home-main-input {
+    margin-top: 10px;
+    z-index: 100;
+  }
+
+  .home-inputs .home-main-text {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
