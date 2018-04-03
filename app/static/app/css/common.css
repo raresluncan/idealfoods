@@ -25,13 +25,13 @@ html body {
   padding: 0;
 }
 
-
 .btn.btn-warning {
   color: #ffffff;
   background-color: #F0AD4E;
   background-image: linear-gradient(to bottom, #F0AD4E, #EB9316);
   border-color: #E38D13 #E38D13 #E38D13;
 }
+
 .btn.btn-warning:hover {
   color: #ffffff;
   background-color: #EB9316;

@@ -19,24 +19,29 @@
   margin: 0 10px 0 10px;
 }
 
-.home-main-input .form-group {
+.home-inputs .form-group {
   margin: 0px;
   height: 34px;
   max-width: 100px;
 }
 
-.home-main-input .form-group input {
+.home-inputs input {
+  max-width: 80px
+}
+
+.home-inputs .home-input {
+  padding: 0px;
+  margin: 0 10px 0 10px;
   max-width: 80px;
 }
 
-.home-inputs .home-main-text {
-  margin: 0px;
-  text-align: left;
+.home-main-input .home-inputs .home-main-text {
+  margin: 7 0 0 0;
   padding: 0px;
   max-width: 124px;
 }
 
-.home-main-text.hyphen-sm-1 {
+.home-inputs .home-main-text.hyphen-sm-1 {
   max-width: 10px;
   text-align: center;
 }
