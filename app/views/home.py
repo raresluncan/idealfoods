@@ -9,4 +9,5 @@ from django.views.decorators.csrf import csrf_protect
 
 @require_http_methods(["GET"])
 def home_get(request):
+    import pdb; pdb.set_trace()
     return render(request, 'app/home.html', {})
