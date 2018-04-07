@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 import datetime
 from django.db.models import Model, CharField, IntegerField, ForeignKey, \
     BooleanField, DateTimeField, EmailField, DateField, CASCADE, SET_NULL, \
-    PositiveIntegerField, DecimalField, PROTECT
+    PositiveIntegerField, DecimalField, PROTECT, ManyToManyField
 from django.core.validators import EmailValidator, MaxLengthValidator, \
     MinLengthValidator, URLValidator, MaxValueValidator, MinValueValidator
 from django.utils import timezone
@@ -72,12 +72,12 @@ class Ingredient(Date):
     """ This class contains ingredients used to make meals """
 
     name = CharField(
-        max_length=30,
+        max_length=32,
         validators=[
-                MaxLengthValidator(30,  message="Ingredient name must contain at \
-                                   most 30 characters"),
-                MinLengthValidator(2,   message="Ingredient name must contain at \
-                                   least 2 characters"),
+            MaxLengthValidator(32,  message="Ingredient name must contain at \
+                               most 32 characters"),
+            MinLengthValidator(2,   message="Ingredient name must contain at \
+                               least 2 characters"),
         ]
     )
 
@@ -85,3 +85,27 @@ class Ingredient(Date):
 
     class Meta:
         db_table = 'ingredients'
+
+
+class Recipe(Date):
+    """ This class contains ingredients used to make meals """
+
+    name = CharField(
+        max_length=32,
+        validators=[
+            MaxLengthValidator(32,  message="Food name must contain at \
+                               most 32 characters"),
+            MinLengthValidator(2,   message="Ingredient name must contain at \
+                               least 2 characters"),
+        ]
+    )
+
+    ingredients = ManyToManyField(Ingredient, db_table='food_ingredients', related_name="recipes")
+    nutrients = ForeignKey(Nutrient, on_delete=PROTECT, null=True, blank=True)
+
+    def _calculate_ingredients(self):
+        return
+
+    def save(self, *args, **kwargs):
+        super(Recipe, self).save(*args, **kwargs)
+        self._calculate_ingredients()
