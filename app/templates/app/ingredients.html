@@ -1,0 +1,17 @@
+{% extends "app/layout.html" %}
+
+{% block head_content %}
+  {{ block.super }}
+  <link rel="stylesheet" href="../static/app/css/ingredients.css">
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+  {% include 'app/partials/table.html' %}
+  {% include 'app/partials/modal.html' with config=add_ingredient_modal_config %}
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="../static/app/js/ingredients.js"></script>
+{% endblock %}

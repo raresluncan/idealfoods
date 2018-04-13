@@ -6,6 +6,16 @@ html body {
   margin-right: 10px;
 }
 
+.container.page-header {
+  border-bottom: 1px solid #ccc;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.container.page-header .header-title {
+  margin-bottom: 0px;
+}
+
 .glyphicon.btn-glyph-after {
   margin-left: 5px;
   margin-top: -15px;
@@ -16,25 +26,80 @@ html body {
   margin-bottom: 0px;
 }
 
-.home-main-input .row {
+.app-table .table-head {
+  margin: 0 auto;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.app-table .table-head .table-col:last-child {
+  border-right: 1px solid #ccc;
+}
+
+.app-table .table-row,
+.app-table .table-col {
+  margin: 0 auto;
+  height: 30px;
+  background-color: #fbfbfb;
+}
+
+.app-table .table-data-center {
+  display:flex;
+  justify-content: center;
+  align-items: center;
   vertical-align: middle;
+  flex-flow: row;
+  text-align: center;
 }
 
-.home-inputs .form-group {
-  margin: 0;
-  padding: 0;
+.app-table .table-data-left {
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  vertical-align: middle;
+  flex-flow: row;
+  text-align: center;
 }
 
-.btn.btn-warning {
-  color: #ffffff;
-  background-color: #F0AD4E;
-  background-image: linear-gradient(to bottom, #F0AD4E, #EB9316);
-  border-color: #E38D13 #E38D13 #E38D13;
+.app-table .table-info {
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  vertical-align: middle;
+  flex-flow: row;
+  text-align: center;
 }
 
-.btn.btn-warning:hover {
-  color: #ffffff;
-  background-color: #EB9316;
-  background-image: linear-gradient(to bottom, #EB9316, #EB9316);
-  border-color: #E38D13 #E38D13 #E38D13;
+.app-table .table-row,
+.app-table .table-head {
+  padding: 0px;
+}
+
+.app-table .table-body .table-col:last-child {
+  border-right: 1px solid #ccc;
+}
+
+.app-table .table-body .table-row:last-child .table-col {
+  border-bottom: 1px solid #ccc;
+}
+
+.app-table .table-col {
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+.app-table .table-head .table-col {
+  background: rgb(234,234,234); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(234,234,234,1) 0%, rgba(239,239,239,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(234,234,234,1) 0%,rgba(239,239,239,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(234,234,234,1) 0%,rgba(239,239,239,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.app-table .table-row:hover > .table-col {
+  background-color: #f0f0f0;
+}
+
+.btn.btn-success.app-success-gradient {
+  background: #4fb840;
+  background-color: linear-gradient(#4fb840, #14a000)
 }
