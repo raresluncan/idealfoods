@@ -7,6 +7,14 @@
 
 {% block content %}
   {{ block.super }}
+  <div class="container page-header">
+    <h1 class="header-title">All ingredients <small class="header-subtitle">and their nutrients (per 100 grams)</small>
+      <button type="button" class="btn btn-success btn-md pull-right" data-toggle="modal" data-target="#addIngredientModal">
+        <span class="glyphicon glyphicon-plus btn-glyph"></span>
+        Add ingredient
+      </button>
+    </h1>
+  </div>
   {% include 'app/partials/table.html' %}
   {% include 'app/partials/modal.html' with config=add_ingredient_modal_config %}
 {% endblock %}

@@ -1,14 +1,6 @@
-<div class="container page-header">
-  <h1 class="header-title">All ingredients <small class="header-subtitle">and their nutrients</small>
-    <button type="button" class="btn btn-success btn-md pull-right" data-toggle="modal" data-target="#addIngredientModal">
-      <span class="glyphicon glyphicon-plus btn-glyph"></span>
-      Add ingredient
-    </button>
-  </h1>
-</div>
 <div class="app-table animated fadeIn">
   <div class="container table-head row vertical-align">
-    <div class="table-col table-data-center col-sm-7">
+    <div class="table-col table-data-center col-sm-6">
       Ingredient
     </div>
     <div class="table-col table-data-center col-sm-1">
@@ -26,11 +18,14 @@
     <div class="table-col table-data-center col-sm-1">
       Fibers
     </div>
+    <div class="table-col table-data-center col-sm-1">
+      Actions
+    </div>
   </div>
   <div class="table-body">
     {% for ingredient in ingredients %}
       <div class="container table-row row vertical-align">
-        <div class="table-col table-data-left col-sm-7 ">
+        <div class="table-col table-data-left col-sm-6 ">
           {{ ingredient.name }}
         </div>
         <div class="table-col table-data-center col-sm-1">
@@ -47,6 +42,10 @@
         </div>
         <div class="table-col table-data-center col-sm-1">
           {{ ingredient.nutrient.fibers}}
+        </div>
+        <div class="table-col table-data-center col-sm-1">
+          {% include 'app/partials/_icon.html' with config=edit_icon_config %}
+          {% include 'app/partials/_icon.html' with config=remove_icon_config %}
         </div>
       </div>
     {% endfor %}

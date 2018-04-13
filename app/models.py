@@ -64,6 +64,15 @@ class Nutrient(Date):
         validators = [MaxValueValidator(10000), MinValueValidator(0)]
     )
 
+    def to_dict(self):
+        return {
+            'proteins': self.proteins,
+            'fats': self.fats,
+            'fibers': self.fibers,
+            'kcals': self.kcals,
+            'carbohydrates': self.carbohydrates,
+        }
+
     class Meta:
         db_table = 'nutrients'
 
@@ -81,10 +90,17 @@ class Ingredient(Date):
         ]
     )
 
-    nutrient = ForeignKey(Nutrient, on_delete=PROTECT, related_name='ingredient')
+    nutrient = ForeignKey(Nutrient, on_delete=PROTECT, related_name='ingredient', null=True, blank=True)
 
     class Meta:
         db_table = 'ingredients'
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'nutrient': self.nutrient.to_dict()
+        }
 
 
 class Recipe(Date):

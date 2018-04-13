@@ -5,7 +5,7 @@ App.api = {};
  */
 App.api.addCsrfToRequestHeader = function(xhr) {
   xhr.setRequestHeader('X-CSRFToken', App.getCookie('csrftoken'));
-}
+};
 
 /**
  * @param {String} url
@@ -13,7 +13,6 @@ App.api.addCsrfToRequestHeader = function(xhr) {
  * @return {Promise}
  */
 App.api.postForm = function(url, serializedFormData) {
-  debugger;
   return $.ajax({
     type: 'POST',
     url: url,
@@ -34,7 +33,7 @@ App.api.post = function(url) {
     dataType: 'json',
     beforeSend: App.api.addCsrfToRequestHeader
   });
-}
+};
 
 /**
  * @param {Array} addIngredientFormData

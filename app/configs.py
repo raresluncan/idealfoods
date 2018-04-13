@@ -1,4 +1,14 @@
-class ModalConfig(object):
+class ConfigInitChecker(object):
+    def __init__(self, *args, **kwargs):
+        for arg in kwargs:
+            if hasattr(self, arg):
+                setattr(self, arg, kwargs[arg])
+            else:
+                raise KeyError('Arg ' + arg + ' is not allowed for ' \
+                               + self.__name__)
+
+
+class ModalConfig(ConfigInitChecker):
     __name__ = "ModalConfig"
     modal_class = ""
     form_class = ""
@@ -10,10 +20,9 @@ class ModalConfig(object):
     cancel_button_class = "btn btn-default"
     content = "no-content"
 
-    def __init__(self, *args, **kwargs):
-        for arg in kwargs:
-            if hasattr(self, arg):
-                setattr(self, arg, kwargs[arg])
-            else:
-                raise KeyError('Arg ' + arg + ' is not allowed for ' \
-                               + self.__name___)
+
+class IconConfig(ConfigInitChecker):
+    __name__ = "IconConfig"
+    icon_class = ""
+    tooltip = False
+    tooltip_title = ""

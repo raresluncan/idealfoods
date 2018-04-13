@@ -26,6 +26,10 @@ html body {
   margin-bottom: 0px;
 }
 
+.app-table {
+  margin-bottom: 50px;
+}
+
 .app-table .table-head {
   margin: 0 auto;
   font-size: 15px;
@@ -95,8 +99,33 @@ html body {
   background: linear-gradient(to bottom, rgba(234,234,234,1) 0%,rgba(239,239,239,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
+.app-table .icon-remove {
+  color: #E53935;
+}
+
+.app-table .icon-remove:hover {
+  color: #C62828;
+  cursor: pointer;
+}
+
+.app-table .icon-edit {
+  color: #1E88E5;
+}
+
+.app-table .icon-edit:hover {
+  color: #1565C0;
+  cursor: pointer;
+}
+
+.app-table .table-icon {
+  padding: 0px;
+  margin-left: 10px;
+  font-size: 15px;
+  text-align: center;
+}
+
 .app-table .table-row:hover > .table-col {
-  background-color: #f0f0f0;
+  background-color: #f2f2f2;
 }
 
 .btn.btn-success.app-success-gradient {

@@ -26,3 +26,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.add-ingredient-form .form-group .help-block {
+  font-size: 10px;
+  font-weight: bolder;
+}
