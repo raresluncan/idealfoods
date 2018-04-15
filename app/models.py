@@ -11,6 +11,7 @@ from django.contrib.auth import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.postgres.fields import JSONField
+from django.db.models import ProtectedError
 
 
 class Date(Model):
@@ -87,10 +88,11 @@ class Ingredient(Date):
                                most 32 characters"),
             MinLengthValidator(2,   message="Ingredient name must contain at \
                                least 2 characters"),
-        ]
+        ],
+        unique=True
     )
 
-    nutrient = ForeignKey(Nutrient, on_delete=PROTECT, related_name='ingredient', null=True, blank=True)
+    nutrient = ForeignKey(Nutrient, on_delete=SET_NULL, related_name='ingredient', null=True, blank=True)
 
     class Meta:
         db_table = 'ingredients'
@@ -101,6 +103,12 @@ class Ingredient(Date):
             'name': self.name,
             'nutrient': self.nutrient.to_dict()
         }
+
+    def delete(self):
+        nutrient = self.nutrient
+        nutrient.delete()
+        super(Ingredient, self).delete()
+
 
 
 class Recipe(Date):

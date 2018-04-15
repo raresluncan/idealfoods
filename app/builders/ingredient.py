@@ -13,3 +13,17 @@ def build_remove_ingredient_icon():
         tooltip = True,
         tooltip_title = "Remove"
     )
+
+def build_confirm_ingredient_edit_icon():
+    return IconConfig(
+        icon_class = 'glyphicon glyphicon-ok-circle table-icon big-icon icon-edit-ok',
+        tooltip = True,
+        tooltip_title = "Confirm"
+    )
+
+def build_cancel_ingredient_edit_icon():
+    return IconConfig(
+        icon_class = 'glyphicon glyphicon-remove-circle table-icon big-icon icon-edit-cancel',
+        tooltip = True,
+        tooltip_title = "Cancel"
+    )

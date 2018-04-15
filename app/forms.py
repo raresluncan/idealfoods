@@ -8,7 +8,7 @@ class AddIngredientForm(ModelForm):
 
     name = CharField(max_length=32, validators=[
         MaxLengthValidator(32, 'Ingredient name must be at most 32 characters.'),
-        MinLengthValidator(2, 'Ingredient name must be at least 2 characters.')
+        MinLengthValidator(2, 'Ingredient name must be at least 2 characters.'),
     ])
 
     class Meta:

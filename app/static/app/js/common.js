@@ -8,6 +8,10 @@ App.initTooltips = function() {
   $('[data-tooltip="tooltip"]').tooltip();
 };
 
+App.hideTooltips = function() {
+  $('[data-tooltip="tooltip"]').tooltip('hide');
+};
+
 /**
  * @param {String} name
  * @return {String}

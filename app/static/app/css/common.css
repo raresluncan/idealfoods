@@ -41,7 +41,8 @@ html body {
 }
 
 .app-table .table-row,
-.app-table .table-col {
+.app-table .table-col,
+.app-table .table-edit-row .form-control {
   margin: 0 auto;
   height: 30px;
   background-color: #fbfbfb;
@@ -79,17 +80,17 @@ html body {
   padding: 0px;
 }
 
+.app-table .table-head .table-col {
+  border-top: 1px solid #ccc;
+}
+
 .app-table .table-body .table-col:last-child {
   border-right: 1px solid #ccc;
 }
 
-.app-table .table-body .table-row:last-child .table-col {
-  border-bottom: 1px solid #ccc;
-}
-
 .app-table .table-col {
   border-left: 1px solid #ccc;
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .app-table .table-head .table-col {
@@ -99,17 +100,28 @@ html body {
   background: linear-gradient(to bottom, rgba(234,234,234,1) 0%,rgba(239,239,239,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
-.app-table .icon-remove {
+.app-table .icon-remove,
+.app-table .glyphicon-remove-circle {
   color: #E53935;
 }
 
-.app-table .icon-remove:hover {
+.app-table .icon-remove:hover,
+.app-table .glyphicon-remove-circle:hover {
   color: #C62828;
   cursor: pointer;
 }
 
 .app-table .icon-edit {
   color: #1E88E5;
+}
+
+.app-table .glyphicon-ok-circle {
+  color: #4CAF50;
+}
+
+.app-table .glyphicon-ok-circle:hover {
+  color: #388E3C;
+  cursor: pointer;
 }
 
 .app-table .icon-edit:hover {
@@ -126,6 +138,27 @@ html body {
 
 .app-table .table-row:hover > .table-col {
   background-color: #f2f2f2;
+}
+
+.app-table .table-edit-row {
+  margin-bottom: 1px;
+}
+
+.app-table .table-edit-row .form-group {
+  padding: 0px;
+}
+
+.app-table .table-edit-row .form-control {
+  border-radius: 0px;
+}
+
+.app-table .extended-row {
+  height: 60px;
+  background-color: #F2F2F2;
+}
+
+.app-table .big-icon {
+  font-size: 18px;
 }
 
 .btn.btn-success.app-success-gradient {

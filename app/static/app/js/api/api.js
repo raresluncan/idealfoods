@@ -26,6 +26,18 @@ App.api.postForm = function(url, serializedFormData) {
  * @param {String} url
  * @return {Promise}
  */
+App.api.delete = function(url) {
+  return $.ajax({
+    type: 'DELETE',
+    url: url,
+    beforeSend: App.api.addCsrfToRequestHeader
+  });
+};
+
+/**
+ * @param {String} url
+ * @return {Promise}
+ */
 App.api.post = function(url) {
   return $.ajax({
     type: 'POST',
@@ -44,3 +56,13 @@ App.api.addIngredient = function(addIngredientFormData) {
 
   return App.api.postForm(url, addIngredientFormData);
 };
+
+/**
+ * @param {Number} ingredientId
+ * @return {Promise}
+ */
+App.api.deleteIngredient = function(ingredientId) {
+  var url = '/ingredients/' + ingredientId + '/delete/';
+
+  return App.api.delete(url);
+}
