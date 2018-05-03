@@ -2,6 +2,13 @@ var App = {}
 
 App.init = function() {
   App.initTooltips();
+  App.setupPopoverResize();
+};
+
+App.setupPopoverResize = function() {
+  $(window).on('resize', function () {
+    $(".form-group.popover-error.has-error").popover('show');
+  });
 };
 
 App.initTooltips = function() {
@@ -57,6 +64,62 @@ App.generateBootstrapFormErrorsAndSuccess = function($form, errors) {
   });
 };
 
+
+/**
+ * @param {jQuery} $row
+ * @param {Array} errors
+ */
+App.generateTableRowFormErrorsAndSuccess = function($row, errors) {
+  $row.find('.form-group').each(function(index, element){
+    var $formGroupElement = $(element);
+    var elementInputName = $formGroupElement.find('input, textarea, select')
+      .attr('name');
+
+    if (errors[elementInputName]) {
+      $formGroupElement.addClass('has-error');
+      App.activateTableRowErrorPopover(
+        $formGroupElement, errors[elementInputName]
+      );
+
+    } else {
+      $formGroupElement.addClass('has-success').removeClass('has-error');
+    }
+  });
+};
+
+App.activateTableRowErrorPopover = function($elementWithPopover, error) {
+  $elementWithPopover.popover({
+    template: App.getTableRowErrorPopoverTemplate().prop('outerHTML'),
+    content: App.getErrorContentForTableRowErrorPopover(error),
+    placement: 'top',
+    animation: false,
+    html: true,
+    trigger: 'focus',
+    container: 'body'
+  }).popover('show');
+}
+
+App.getErrorContentForTableRowErrorPopover = function(error_message) {
+  var $span = $('<span>').addClass('popover-error-text')
+  $span.append(error_message);
+  return $span
+}
+
+App.getTableRowErrorPopoverTemplate = function() {
+  var $popoverTemplate = $('<div>').addClass('popover table-edit-row-error-popover');
+  var $popoverTitle = $('<h3>').addClass('popover-title')
+  $popoverTemplate.attr('role', 'tooltip');
+
+  var $arrow = $('<div>').addClass('arrow');
+  var $popoverBody = $('<div>').addClass('popover-content center');
+
+  $popoverTemplate.append($arrow)
+  $popoverTemplate.append($popoverBody);
+
+  return $popoverTemplate
+}
+
+
 /**
  * @param {jQuery} $formParent
  */
@@ -70,5 +133,18 @@ App.clearBootstrapForm = function ($formParent) {
     }
   });
 };
+
+/**
+ * @param {jQuery} $tableRow
+ */
+App.restoreOriginalTableRowClass = function($tableRow) {
+  $tableRow.attr('class', 'container table-row row vertical-align');
+}
+
+App.destroyAllTableEditRowPopovers = function($row) {
+  $row.find('.form-group.has-error').each(function(index, element) {
+    $(element).popover('destroy');
+  });
+}
 
 $(document).ready(App.init)

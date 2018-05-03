@@ -1,0 +1,44 @@
+@media (max-width: 767px) {
+
+  .accordion-xs .table-head { display: none; }
+
+  .accordion-xs .row { border-bottom-color: #ccc; }
+
+  .accordion-xs .table-head,
+  .accordion-xs .table-data-left,
+  .accordion-xs .table-data-center {
+    float: none;
+    width: auto;
+    padding: 0;
+  }
+
+  .accordion-xs .accordion-xs-toggle {
+    background: rgb(234,234,234); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(234,234,234,1) 0%, rgba(239,239,239,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(234,234,234,1) 0%,rgba(239,239,239,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(234,234,234,1) 0%,rgba(239,239,239,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .accordion-xs .accordion-xs-toggle:hover { background: #03A9F4; }
+
+  .accordion-xs .accordion-xs-toggle:after {
+    content: '\2b';
+    float: right;
+  }
+  .accordion-xs .accordion-xs-toggle.collapsed {
+    margin-bottom: 100px;
+  }
+  .accordion-xs .accordion-xs-toggle.collapsed:after { content: '\2212'; }
+
+  .accordion-xs-collapse .inner {
+    padding: 10px;
+  }
+
+  .accordion-xs-collapse .table-data-center:before,
+  .accordion-xs-collapse .table-data-left:before {
+    font-weight: bold;
+  }
+}

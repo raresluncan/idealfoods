@@ -66,3 +66,9 @@ App.api.deleteIngredient = function(ingredientId) {
 
   return App.api.delete(url);
 }
+
+App.api.editIngredient = function($editIngredientFormData, ingredientId) {
+  var url = '/ingredients/' + ingredientId + '/edit/';
+
+  return App.api.postForm(url, $editIngredientFormData);
+}

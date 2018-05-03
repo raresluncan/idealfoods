@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^ingredients/create/$', views.ingredient.create_ingredients, name="create_ingredients"),
     url(r'^ingredients/(?P<ingredient_id>[0-9]+)/delete/$',
         views.ingredient.delete_ingredients, name="delete_ingredients"),
+    url(r'^ingredients/(?P<ingredient_id>[0-9]+)/edit/$',
+        views.ingredient.edit_ingredient, name="edit_ingredient"),
 
     #home view
     url(r'^$', views.home.home_get, name='home'),

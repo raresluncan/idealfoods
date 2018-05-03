@@ -1,76 +1,83 @@
-<div class="app-table animated fadeIn ingredients-table">
+<div class="app-table accordion-xs animated fadeIn ingredients-table">
   <div class="container table-head row vertical-align">
-    <div class="table-col table-data-center col-sm-6">
+    <div class="th table-col table-data-center col-xs-2 col-sm-6 col-md-6">
       Ingredient
     </div>
-    <div class="table-col table-data-center col-sm-1">
+    <div class="th table-col table-data-center col-xs-2 col-sm-1 col-md-1">
       KCalories
     </div>
-    <div class="table-col table-data-center col-sm-1">
+    <div class="th table-col table-data-center col-xs-2 col-sm-1 col-md-1">
       Proteins
     </div>
-    <div class="table-col table-data-center col-sm-1">
+    <div class="th table-col table-data-center col-xs-2 col-sm-1 col-md-1">
       Carbs
     </div>
-    <div class="table-col table-data-center col-sm-1">
+    <div class="th table-col table-data-center col-xs-2 col-sm-1 col-md-1">
       Fats
     </div>
-    <div class="table-col table-data-center col-sm-1">
+    <div class="th table-col table-data-center col-xs-1 col-sm-1 col-md-1">
       Fibers
     </div>
-    <div class="table-col table-data-center col-sm-1">
+    <div class="th table-col table-data-center col-xs-1 col-sm-1 col-md-1">
       Actions
     </div>
   </div>
   <div class="table-body">
     {% for ingredient in ingredients %}
-      <div class="container table-row row vertical-align" data-object-id="{{ ingredient.id }}">
-        <div class="table-col table-data-left col-sm-6 " data-name="name">
+      <div class="tr container table-row row vertical-align" data-object-id="{{ ingredient.id }}">
+        <div class="td table-col accordion-xs-toggle table-data-left col-xs-12 col-sm-6 col-md-6" data-name="name">
           {{ ingredient.name }}
         </div>
-        <div class="table-col table-data-center col-sm-1" data-name="kcals">
-          {{ ingredient.nutrient.kcals }}
-        </div>
-        <div class="table-col table-data-center col-sm-1" data-name="proteins">
-          {{ ingredient.nutrient.proteins}}
-        </div>
-        <div class="table-col table-data-center col-sm-1" data-name="carbohydrates">
-          {{ ingredient.nutrient.carbohydrates  }}
-        </div>
-        <div class="table-col table-data-center col-sm-1" data-name="fats">
-          {{ ingredient.nutrient.fats }}
-        </div>
-        <div class="table-col table-data-center col-sm-1" data-name="fibers">
-          {{ ingredient.nutrient.fibers}}
-        </div>
-        <div class="table-col table-data-center col-sm-1">
-          {% include 'app/partials/_icon.html' with config=edit_icon_config %}
-          {% include 'app/partials/_icon.html' with config=remove_icon_config %}
+        <div class="accordion-xs-collapse">
+
+            <div class="inner">
+              <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="kcals">
+                {{ ingredient.nutrient.kcals|floatformat }}
+              </div>
+              <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="proteins">
+                {{ ingredient.nutrient.proteins|floatformat }}
+              </div>
+              <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="carbohydrates">
+                {{ ingredient.nutrient.carbohydrates|floatformat }}
+              </div>
+              <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="fats">
+                {{ ingredient.nutrient.fats|floatformat }}
+              </div>
+              <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="fibers">
+                {{ ingredient.nutrient.fibers|floatformat }}
+              </div>
+              <div class="table-col table-data-center col-xs-1 col-sm-1 col-md-1">
+                {% include 'app/partials/_icon.html' with config=edit_icon_config %}
+                {% include 'app/partials/_icon.html' with config=remove_icon_config %}
+              </div>
+            </div>
+
+
         </div>
       </div>
     {% endfor %}
-    <div class="container table-row row vertical-align table-edit-row" data-object-id="{{ ingredient.id }}" style="display: none">
+    <div class="container table-row row vertical-align table-edit-row" style="display: none">
       <form action="">
-        <div class="form-group table-col col-sm-6">
-          <input type="text" class="form-control" name="name">
+        <div class="form-group popover-error table-col col-sm-6">
+          <input type="text" class="form-control" name="name" data-toggle="popover">
         </div>
 
-        <div class="form-group table-col col-sm-1">
-          <input type="number" class="form-control" name="kcals">
+        <div class="form-group popover-error table-col col-sm-1">
+          <input type="number" class="form-control" name="kcals" data-toggle="popover">
         </div>
-        <div class="form-group table-col col-sm-1">
+        <div class="form-group popover-error table-col col-sm-1" data-toggle="popover">
           <input type="number" class="form-control" name="proteins">
         </div>
 
-        <div class="form-group table-col col-sm-1">
-          <input type="number" class="form-control" name="carbohydrates">
+        <div class="form-group popover-error table-col col-sm-1">
+          <input type="number" class="form-control" name="carbohydrates" data-toggle="popover">
         </div>
 
-        <div class="form-group table-col col-sm-1">
-          <input type="number" class="form-control" name="fats">
+        <div class="form-group popover-error table-col col-sm-1">
+          <input type="number" class="form-control" name="fats" data-toggle="popover">
         </div>
-        <div class="form-group table-col col-sm-1">
-          <input type="number" class="form-control" name="fibers">
+        <div class="form-group popover-error table-col col-sm-1">
+          <input type="number" class="form-control" name="fibers" data-toggle="popover">
         </div>
         <div class="table-col table-data-center col-sm-1">
           {% include 'app/partials/_icon.html' with config=confirm_edit_icon_config %}
