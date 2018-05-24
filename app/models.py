@@ -109,6 +109,9 @@ class Ingredient(Date):
         nutrient.delete()
         super(Ingredient, self).delete()
 
+    def get_foreign_key_objects(self):
+        return [self.nutrient]
+
 
 
 class Recipe(Date):
@@ -129,6 +132,9 @@ class Recipe(Date):
 
     def _calculate_ingredients(self):
         return
+
+    def get_foreign_key_objects(self):
+        return [self.nutrients, self.ingredients]
 
     def save(self, *args, **kwargs):
         super(Recipe, self).save(*args, **kwargs)

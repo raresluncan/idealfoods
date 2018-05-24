@@ -2,8 +2,9 @@
 
 {% block head_content %}
   {{ block.super }}
-  <link rel="stylesheet" href="../static/app/css/ingredients.css">
+  <link rel="stylesheet" href="../static/app/css/common/table.css">
   <link rel="stylesheet" href="../static/app/css/common/accordion_table_xs.css">
+  <link rel="stylesheet" href="../static/app/css/ingredients.css">
 {% endblock %}
 
 {% block content %}
@@ -18,12 +19,13 @@
       </button>
     </div>
   </div>
-  {% include 'app/partials/table.html' %}
+  {% include 'app/partials/table/table.html' with table_config=ingredients_table_config %}
   {% include 'app/partials/modal.html' with config=add_ingredient_modal_config %}
 {% endblock %}
 
 {% block js %}
   {{ block.super }}
-  <script src="../static/app/js/ingredients.js"></script>
   <script src="../static/app/js/common/accordion_table_xs.js"></script>
+  <script src="../static/app/js/common/table.js"></script>
+  <script src="../static/app/js/ingredients.js"></script>
 {% endblock %}

@@ -1,0 +1,15 @@
+<div class="container table-row row vertical-align table-edit-row" style="display: none">
+  <form action="">
+    {% for column_config in columns %}
+      {% if column_config.actions %}
+        <div class="table-col table-data-center {{ column_config.responsive_classes }}">
+          {% include 'app/partials/_actions_renderer.html' with actions=actions %}
+        </div>
+      {% else %}
+        <div class="form-group popover-error table-col {{ column_config.responsive_classes }}">
+          <input type="text" class="form-control" name="{{ column_config.field }}" data-toggle="popover">
+        </div>
+      {% endif %}
+    {% endfor %}
+  </form>
+</div>

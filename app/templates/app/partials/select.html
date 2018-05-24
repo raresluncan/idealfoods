@@ -1,0 +1,7 @@
+{% load app_tags %}
+
+<select class="selectpicker {{config.klass}}" type={{config.type}} data-live-search="{{config.live_search|lower}}" data-live-search-placeholder={{config.live_search_placeholder}}>
+  {% for object in config.queryset %}
+    <option data-tokens="{{object.id}}">{{object|get_field_value:config.options_field}}</option>
+  {% endfor %}
+</select>

@@ -1,39 +1,3 @@
-html body {
-  background-color: #F2F2F2;
-}
-
-.glyphicon.btn-glyph {
-  margin-right: 10px;
-}
-
-.container.page-header {
-  border-bottom: 1px solid #ccc;
-  padding-left: 0px;
-  padding-right: 0px;
-  margin-bottom: 50px;
-  margin-top: 50px;
-}
-
-.container.page-header .header-button{
-  padding-right: 0px;
-}
-
-.container.page-header .header-title {
-  margin-bottom: 0px;
-  margin-top: 0px;
-  padding-left: 0px;
-}
-
-.glyphicon.btn-glyph-after {
-  margin-left: 5px;
-  margin-top: -15px;
-  font-weight: bolder;
-}
-
-.navbar.navbar-default {
-  margin-bottom: 0px;
-}
-
 .app-table {
   margin-bottom: 50px;
 }
@@ -144,7 +108,8 @@ html body {
   text-align: center;
 }
 
-.app-table .table-row:hover > .table-col {
+.app-table .table-row:hover > .table-col,
+.app-table .table-row:hover .inner .table-col {
   background-color: #f2f2f2;
 }
 
@@ -174,11 +139,6 @@ html body {
   font-size: 10px;
   font-weight: bolder;
   margin-top: 0px;
-}
-
-.btn.btn-success.app-success-gradient {
-  background: #4fb840;
-  background-color: linear-gradient(#4fb840, #14a000)
 }
 
 .popover.table-edit-row-error-popover .popover-content .popover-error-text {

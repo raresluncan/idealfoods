@@ -40,7 +40,6 @@ $(function() {
 
           $thisToggle.addClass('collapse'); //class used for icon marker
           $siblingToggle.removeClass('collapse'); //remove sibling marker class
-          $targetRow.find('.accordion-xs-collapse').find('.inner').slideDown();
       }
   });
 });

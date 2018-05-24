@@ -4,13 +4,15 @@
 
   .accordion-xs .row { border-bottom-color: #ccc; }
 
-  .accordion-xs .table-head,
+  /* .accordion-xs .accordion-xs-collapse { display: none;} */
+
+  /* .accordion-xs .table-head,
   .accordion-xs .table-data-left,
   .accordion-xs .table-data-center {
     float: none;
     width: auto;
     padding: 0;
-  }
+  } */
 
   .accordion-xs .accordion-xs-toggle {
     background: rgb(234,234,234); /* Old browsers */

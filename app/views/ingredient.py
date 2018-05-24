@@ -10,9 +10,9 @@ from app.models import Ingredient, Nutrient
 from app.configs import ModalConfig, IconConfig
 from app.forms import AddIngredientForm
 
-from app.builders.ingredient import build_edit_ingredient_icon, \
+from app.builders.ingredients_builders import build_edit_ingredient_icon, \
     build_remove_ingredient_icon, build_cancel_ingredient_edit_icon, \
-    build_confirm_ingredient_edit_icon
+    build_confirm_ingredient_edit_icon, build_ingredients_table
 
 def _get_edit_icon_html():
     edit_icon = build_edit_ingredient_icon()
@@ -27,10 +27,6 @@ def _get_remove_icon_html():
 
 @require_http_methods(["GET"])
 def list_ingredients(request):
-    edit_icon = build_edit_ingredient_icon()
-    remove_icon = build_remove_ingredient_icon()
-    confirm_edit_icon = build_confirm_ingredient_edit_icon()
-    cancel_edit_icon = build_cancel_ingredient_edit_icon()
 
     add_ingredient_modal_config = ModalConfig(
         modal_id='addIngredientModal',
@@ -40,13 +36,11 @@ def list_ingredients(request):
         form_class='add-ingredient-form'
     )
 
+    ingredients_table_config = build_ingredients_table()
+
     return render(request, 'app/ingredients.html', {
         'add_ingredient_modal_config': add_ingredient_modal_config,
-        'ingredients': Ingredient.objects.all(),
-        'remove_icon_config': remove_icon,
-        'edit_icon_config': edit_icon,
-        'confirm_edit_icon_config': confirm_edit_icon,
-        'cancel_edit_icon_config': cancel_edit_icon,
+        'ingredients_table_config': ingredients_table_config,
     })
 
 
@@ -115,7 +109,7 @@ def edit_ingredient(request, ingredient_id):
             nutrient = Nutrient.objects.filter(id=ingredient.nutrient.id)
             nutrient.update(**edit_ingredient_form.cleaned_data)
             ingredient.nutrient = nutrient[0]
-            
+
         edit_icon_html = _get_edit_icon_html()
         remove_icon_html = _get_remove_icon_html()
 

@@ -13,7 +13,7 @@
         </div>
       <div class="modal-body">
         <form class="{{ config.form_class }}">
-          {% bootstrap_form config.content %}
+            {% include 'app/partials/select.html' with config=sc %}
         </form>
       </div>
       <div class="modal-footer">

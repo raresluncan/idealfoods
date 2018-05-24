@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^ingredients/(?P<ingredient_id>[0-9]+)/edit/$',
         views.ingredient.edit_ingredient, name="edit_ingredient"),
 
+    #recipe views
+    url(r'^recipes/$', views.recipes.list_recipes, name="list_recipes"),
     #home view
     url(r'^$', views.home.home_get, name='home'),
 ]

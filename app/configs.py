@@ -26,3 +26,44 @@ class IconConfig(ConfigInitChecker):
     icon_class = ""
     tooltip = False
     tooltip_title = ""
+
+
+class ColumnConfig(ConfigInitChecker):
+    __name__ = "ColumnConfig"
+
+    title = ""
+    field = ""
+    actions = None
+
+    header_classes = "th table-col table-data-center"
+    data_classes = "table-col table-data-center"
+    responsive_classes = ""
+    edit_responsive_classes = ""
+
+    mobile_toggler_column = False
+
+
+class TableConfig(ConfigInitChecker):
+    __name__ = "TableConfig"
+
+    table_name = ""
+    columns = []
+    editable = False
+    edit_actions = []
+
+    queryset = None
+
+    def set_column_configs(self, column_configs=[]):
+        self.columns = column_configs
+
+
+class SelectConfig(ConfigInitChecker):
+    __name__ = "SelectConfig"
+
+    options_field = ""
+    klass = ""
+    type = "basic"
+    live_search = True
+    live_search_placeholder = "Search items"
+    mobile = True
+    queryset = None
