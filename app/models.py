@@ -67,11 +67,22 @@ class Nutrient(Date):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'proteins': self.proteins,
             'fats': self.fats,
             'fibers': self.fibers,
             'kcals': self.kcals,
             'carbohydrates': self.carbohydrates,
+        }
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'proteins': str(self.proteins),
+            'fats': str(self.fats),
+            'fibers': str(self.fibers),
+            'kcals': str(self.kcals),
+            'carbohydrates': str(self.carbohydrates),
         }
 
     class Meta:
@@ -102,6 +113,13 @@ class Ingredient(Date):
             'id': self.id,
             'name': self.name,
             'nutrient': self.nutrient.to_dict()
+        }
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'nutrient': self.nutrient.to_json()
         }
 
     def delete(self):
@@ -139,3 +157,18 @@ class Recipe(Date):
     def save(self, *args, **kwargs):
         super(Recipe, self).save(*args, **kwargs)
         self._calculate_ingredients()
+
+    def get_ingredients(self):
+        return Ingredient.objects.filter(
+            id__in=Recipe.objects.values_list('ingredients', flat=True)
+        )
+
+    def to_dict(self):
+        return dict({
+            'id': self.id,
+            'name': self.name,
+            'ingredients': [
+                ingredient.to_json() for ingredient in self.get_ingredients()
+            ],
+            'nutrients': self.nutrients.to_json()
+        })

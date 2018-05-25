@@ -21,13 +21,16 @@
     </div>
   </div>
   {% include 'app/partials/table/table.html' with table_config=recipes_table_config %}
-  {% include 'app/partials/modal.html' with config=add_recipe_modal_config %}
+  {% include 'app/partials/modal/modal.html' with config=add_recipe_modal_config %}
 
 {% endblock %}
 
 {% block js %}
   {{ block.super }}
+  <script src="../static/app/js/common/common.js"></script>
   <script src="../static/app/js/common/accordion_table_xs.js"></script>
   <script src="../static/app/js/common/table.js"></script>
+  <script src="../static/app/js/api/api.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+  <script src="../static/app/js/recipes.js"></script>
 {% endblock %}

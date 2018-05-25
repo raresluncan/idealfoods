@@ -67,3 +67,6 @@ class SelectConfig(ConfigInitChecker):
     live_search_placeholder = "Search items"
     mobile = True
     queryset = None
+    live_search_style = "contains"
+    header = False
+    title = "Select an item"

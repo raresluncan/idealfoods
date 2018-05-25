@@ -34,8 +34,33 @@ html body {
   margin-bottom: 0px;
 }
 
-
 .btn.btn-success.app-success-gradient {
   background: #4fb840;
   background-color: linear-gradient(#4fb840, #14a000)
+}
+
+.modal-section {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #586069;
+}
+
+.center-block {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+}
+
+.glyphicon.icon-remove {
+  color: #E53935;
+}
+
+.glyphicon.icon-remove:hover {
+  color: #C62828;
+  cursor: pointer;
 }

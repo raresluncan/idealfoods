@@ -15,6 +15,7 @@ urlpatterns = [
 
     #recipe views
     url(r'^recipes/$', views.recipes.list_recipes, name="list_recipes"),
+    url(r'^recipes/getJSON/$', views.recipes.get_recipes_as_json, name="list_recipes_json"),
     #home view
     url(r'^$', views.home.home_get, name='home'),
 ]

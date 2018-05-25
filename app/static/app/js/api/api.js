@@ -34,6 +34,20 @@ App.api.delete = function(url) {
   });
 };
 
+
+/**
+ * @param {String} url
+ * @return {Promise}
+ */
+App.api.get = function(url) {
+  return $.ajax({
+    type: 'GET',
+    url: url,
+    beforeSend: App.api.addCsrfToRequestHeader
+  });
+};
+
+
 /**
  * @param {String} url
  * @return {Promise}
@@ -71,4 +85,10 @@ App.api.editIngredient = function($editIngredientFormData, ingredientId) {
   var url = '/ingredients/' + ingredientId + '/edit/';
 
   return App.api.postForm(url, $editIngredientFormData);
+}
+
+App.api.getRecipesData = function() {
+  var url = '/recipes/getJSON/';
+
+  return App.api.get(url);
 }
