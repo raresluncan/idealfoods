@@ -11,6 +11,7 @@ from django.contrib.auth import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.postgres.fields import JSONField
+from django.db.models import ProtectedError
 
 
 class Date(Model):
@@ -64,6 +65,26 @@ class Nutrient(Date):
         validators = [MaxValueValidator(10000), MinValueValidator(0)]
     )
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'proteins': self.proteins,
+            'fats': self.fats,
+            'fibers': self.fibers,
+            'kcals': self.kcals,
+            'carbohydrates': self.carbohydrates,
+        }
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'proteins': str(self.proteins),
+            'fats': str(self.fats),
+            'fibers': str(self.fibers),
+            'kcals': str(self.kcals),
+            'carbohydrates': str(self.carbohydrates),
+        }
+
     class Meta:
         db_table = 'nutrients'
 
@@ -78,13 +99,37 @@ class Ingredient(Date):
                                most 32 characters"),
             MinLengthValidator(2,   message="Ingredient name must contain at \
                                least 2 characters"),
-        ]
+        ],
+        unique=True
     )
 
-    nutrient = ForeignKey(Nutrient, on_delete=PROTECT, related_name='ingredient')
+    nutrient = ForeignKey(Nutrient, on_delete=SET_NULL, related_name='ingredient', null=True, blank=True)
 
     class Meta:
         db_table = 'ingredients'
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'nutrient': self.nutrient.to_dict()
+        }
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'nutrient': self.nutrient.to_json()
+        }
+
+    def delete(self):
+        nutrient = self.nutrient
+        nutrient.delete()
+        super(Ingredient, self).delete()
+
+    def get_foreign_key_objects(self):
+        return [self.nutrient]
+
 
 
 class Recipe(Date):
@@ -106,6 +151,24 @@ class Recipe(Date):
     def _calculate_ingredients(self):
         return
 
+    def get_foreign_key_objects(self):
+        return [self.nutrients, self.ingredients]
+
     def save(self, *args, **kwargs):
         super(Recipe, self).save(*args, **kwargs)
         self._calculate_ingredients()
+
+    def get_ingredients(self):
+        return Ingredient.objects.filter(
+            id__in=Recipe.objects.values_list('ingredients', flat=True)
+        )
+
+    def to_dict(self):
+        return dict({
+            'id': self.id,
+            'name': self.name,
+            'ingredients': [
+                ingredient.to_json() for ingredient in self.get_ingredients()
+            ],
+            'nutrients': self.nutrients.to_json()
+        })

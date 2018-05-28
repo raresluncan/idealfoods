@@ -1,0 +1,7 @@
+<div class="container table-head row vertical-align">
+  {% for column_config in columns %}
+    <div class="{{ column_config.header_classes }} {{column_config.responsive_classes}}">
+      {{ column_config.title }}
+    </div>
+  {% endfor %}
+</div>

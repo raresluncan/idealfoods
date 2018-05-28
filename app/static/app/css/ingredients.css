@@ -1,0 +1,33 @@
+.add-ingredient-form .form-group {
+  flex: 1 0 20%;
+  max-width: 103px;
+  margin: 5px;
+  padding: 0 3px 0 3px;
+  text-align: center;
+}
+
+.add-ingredient-form .form-group:first-child {
+  flex: 0 1 100%;
+  max-width: 100%;
+  text-align: left;
+}
+
+.add-ingredient-form .form-group:first-child input {
+  text-align: left;
+}
+
+.add-ingredient-form .form-group input {
+  text-align: center;
+}
+
+.add-ingredient-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.add-ingredient-form .form-group .help-block {
+  font-size: 10px;
+  font-weight: bolder;
+}

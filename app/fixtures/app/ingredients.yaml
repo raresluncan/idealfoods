@@ -2,20 +2,20 @@
   pk: 1
   fields:
     name: 'egg'
-    nutrients: 1
+    nutrient: 1
     created_at: '2018-03-11 11:02:57'
     updated_at: '2018-03-11 11:02:57'
 - model: app.ingredient
   pk: 2
   fields:
     name: 'milk'
-    nutrients: 2
+    nutrient: 2
     created_at: '2018-03-11 11:02:57'
     updated_at: '2018-03-11 11:02:57'
 - model: app.ingredient
   pk: 3
   fields:
     name: 'bacon'
-    nutrients: 3
+    nutrient: 3
     created_at: '2018-03-11 11:02:57'
     updated_at: '2018-03-11 11:02:57'

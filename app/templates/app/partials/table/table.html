@@ -1,0 +1,9 @@
+<div class="app-table {{table_config.table_name}} accordion-xs animated fadeIn">
+  {% include 'app/partials/table/table_head.html' with columns=table_config.columns %}
+  <div class="table-body">
+    {% include 'app/partials/table/table_row.html' with table_config=table_config %}
+    {% if table_config.editable %}
+      {% include 'app/partials/table/table_edit_row.html' with columns=table_config.columns actions=table_config.edit_actions %}
+    {% endif %}
+  </div>
+</div>

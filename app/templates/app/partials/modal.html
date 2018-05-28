@@ -1,0 +1,29 @@
+{% load bootstrap3 %}
+
+<div id="{{config.modal_id}}" class="modal fade {{config.modal_class}}" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          {% if config.title %}
+            <h4 class="modal-title text-center">{{config.title}}</h4>
+          {% endif %}
+        </div>
+      <div class="modal-body">
+        <form class="{{ config.form_class }}">
+          {% for config_item in config.content %}
+            {% with config=config_item %}
+              {% include config.partial_path with config=config %}
+            {% endwith %}
+          {% endfor %}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="{{ config.confirm_button_class }}">{{ config.confirm_button_text }}</button>
+        <button type="button" class="{{ config.cancel_button_class }}" data-dismiss="modal">{{ config.cancel_button_text }}</button>
+      </div>
+    </div>
+  </div>
+</div>

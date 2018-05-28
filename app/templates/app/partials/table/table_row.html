@@ -1,0 +1,58 @@
+{% load app_tags %}
+
+{% with toggler_column=table_config|get_toggler_column %}
+  {% for object in table_config.queryset %}
+    <div class="container table-row row vertical-align" data-object-id="{{ object.id }}">
+      <div class="{{ toggler_column.data_classes }} {{ toggler_column.responsive_classes }}" data-name="{{toggler_column.field}}">
+        {{ object|get_field_value:toggler_column.field }}
+      </div>
+
+      <div class="accordion-xs-collapse">
+        <div class="inner">
+          {% for column_config in table_config.columns %}
+            {% if not column_config.mobile_toggler_column %}
+              {% if column_config.actions %}
+                <div class="table-col table-data-center {{ column_config.responsive_classes }}">
+                  {% include 'app/partials/_actions_renderer.html' with actions=column_config.actions %}
+                </div>
+              {% else %}
+                <div class="{{ column_config.data_classes }} {{ column_config.responsive_classes }}" data-name="{{column_config.field}}">
+                  {{ object|get_field_value:column_config.field }}
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endwith %}
+<!-- <div class="container table-row row vertical-align" data-object-id="{{ ingredient.id }}">
+
+  <div class="table-col accordion-xs-toggle table-data-left col-xs-12 col-sm-6 col-md-6" data-name="name">
+    {{ ingredient.name }}
+  </div>
+  <div class="accordion-xs-collapse">
+    <div class="inner">
+      <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="kcals">
+        {{ ingredient.nutrient.kcals|floatformat }}
+      </div>
+      <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="proteins">
+        {{ ingredient.nutrient.proteins|floatformat }}
+      </div>
+      <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="carbohydrates">
+        {{ ingredient.nutrient.carbohydrates|floatformat }}
+      </div>
+      <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="fats">
+        {{ ingredient.nutrient.fats|floatformat }}
+      </div>
+      <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1" data-name="fibers">
+        {{ ingredient.nutrient.fibers|floatformat }}
+      </div>
+      <div class="table-col table-data-center col-xs-12 col-sm-1 col-md-1">
+        {% include 'app/partials/_icon.html' with config=edit_icon_config %}
+        {% include 'app/partials/_icon.html' with config=remove_icon_config %}
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,39 @@
+{% extends "app/layout.html" %}
+
+{% block head_content %}
+  {{ block.super }}
+  <link rel="stylesheet" href="../static/app/css/common/table.css">
+  <link rel="stylesheet" href="../static/app/css/common/accordion_table_xs.css">
+  <link rel="stylesheet" href="../static/app/css/recipes.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+  <div class="container page-header">
+    <h1 class="header-title col-xs-10 col-sm-8">All recipes <small class="header-subtitle hidden-xs hidden-sm">and their nutrients (per serving)</small>
+    </h1>
+    <div class="header-button col-xs-2 col-sm-4">
+      <button type="button" class="btn btn-success btn-md pull-right" data-toggle="modal" data-target="#addRecipeModal">
+        <span class="glyphicon glyphicon-plus btn-glyph"></span>
+        Add recipe
+      </button>
+    </div>
+  </div>
+  {% include 'app/partials/table/table.html' with table_config=recipes_table_config %}
+  {% include 'app/partials/modal.html' with config=add_recipe_modal_config %}
+
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="../static/app/js/common/common.js"></script>
+  <script src="../static/app/js/common/accordion_table_xs.js"></script>
+  <script src="../static/app/js/common/table.js"></script>
+  <script src="../static/app/js/api/api.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+  <script src="../static/app/js/recipes/index.js"></script>
+  <script src="../static/app/js/recipes/helpers.js"></script>
+  <script src="../static/app/js/recipes/creators.js"></script>
+  <script src="../static/app/js/recipes/recipes.js"></script>
+{% endblock %}
