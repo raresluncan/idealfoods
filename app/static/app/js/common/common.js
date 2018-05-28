@@ -95,10 +95,55 @@ App.restoreOriginalTableRowClass = function($tableRow) {
   $tableRow.attr('class', 'container table-row row vertical-align');
 }
 
+/**
+ * @param {jQuery} $trow
+ */
 App.destroyAllTableEditRowPopovers = function($row) {
   $row.find('.form-group.has-error').each(function(index, element) {
     $(element).popover('destroy');
   });
 }
 
-$(document).ready(App.init)
+/**
+ * @param {jQuery} $select
+ */
+App.refreshSelect = function($select) {
+  $select.selectpicker('val', '');
+  $select.selectpicker('refresh');
+  $select.selectpicker('toggle');
+  $('.btn.dropdown-toggle.bs-placeholder').blur();
+}
+
+/**
+ * @param {jQuery} $select
+ * @param {Number} $optionId
+ */
+App.removeOptionFromSelect = function($select, optionId) {
+  $select.find('option[value=' + optionId + ']').remove();
+}
+
+/**
+ * @param {Number} value
+ * @return {Number}
+ */
+App.prettifyFixedFloat = function(value) {
+  if (parseInt(value) == parseFloat(value)) {
+    return value;
+  }
+  return parseFloat(value).toFixed(2);
+}
+
+/**
+ * @param {String} iconType
+ * @return {jQuery}
+ */
+App.createGlyphicon = function(iconClass, tootlipText=null) {
+  if (!tootlipText) {
+    return $('<span>').addClass('glyphicon ' + iconClass);
+  }
+
+  return $('<span>').addClass('glyphicon ' + iconClass)
+    .attr('data-tooltip', 'tooltip')
+    .attr('title', tootlipText)
+    .attr('data-original-title', tootlipText)
+};

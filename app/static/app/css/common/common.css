@@ -56,11 +56,32 @@ html body {
   display:block;
 }
 
-.glyphicon.icon-remove {
+.select-wrapper {
+  margin: 5px;
+  padding: 3px;
+}
+
+.select-wrapper .select-title {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.icon-remove,
+.glyphicon-remove-circle {
   color: #E53935;
 }
 
-.glyphicon.icon-remove:hover {
+.icon-remove:hover,
+.glyphicon-remove-circle:hover {
   color: #C62828;
+  cursor: pointer;
+}
+
+.glyphicon-ok-circle {
+  color: #4CAF50;
+}
+
+.glyphicon-ok-circle:hover {
+  color: #388E3C;
   cursor: pointer;
 }

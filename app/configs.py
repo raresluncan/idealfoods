@@ -10,6 +10,8 @@ class ConfigInitChecker(object):
 
 class ModalConfig(ConfigInitChecker):
     __name__ = "ModalConfig"
+    partial_path = "app/partials/modal.html"
+
     modal_class = ""
     form_class = ""
     modal_id = ""
@@ -23,6 +25,8 @@ class ModalConfig(ConfigInitChecker):
 
 class IconConfig(ConfigInitChecker):
     __name__ = "IconConfig"
+    partial_path = "app/partials/select/_icon.html"
+
     icon_class = ""
     tooltip = False
     tooltip_title = ""
@@ -30,6 +34,7 @@ class IconConfig(ConfigInitChecker):
 
 class ColumnConfig(ConfigInitChecker):
     __name__ = "ColumnConfig"
+    partial_path = ""
 
     title = ""
     field = ""
@@ -45,6 +50,7 @@ class ColumnConfig(ConfigInitChecker):
 
 class TableConfig(ConfigInitChecker):
     __name__ = "TableConfig"
+    partial_path = ""
 
     table_name = ""
     columns = []
@@ -59,6 +65,7 @@ class TableConfig(ConfigInitChecker):
 
 class SelectConfig(ConfigInitChecker):
     __name__ = "SelectConfig"
+    partial_path = "app/partials/select.html"
 
     options_field = ""
     klass = ""
@@ -70,3 +77,9 @@ class SelectConfig(ConfigInitChecker):
     live_search_style = "contains"
     header = False
     title = "Select an item"
+    wrapper_title = "Select"
+
+
+class FormConfig(ConfigInitChecker):
+    partial_path = "app/partials/form.html"
+    form = None

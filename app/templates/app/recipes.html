@@ -21,7 +21,7 @@
     </div>
   </div>
   {% include 'app/partials/table/table.html' with table_config=recipes_table_config %}
-  {% include 'app/partials/modal/modal.html' with config=add_recipe_modal_config %}
+  {% include 'app/partials/modal.html' with config=add_recipe_modal_config %}
 
 {% endblock %}
 
@@ -32,5 +32,8 @@
   <script src="../static/app/js/common/table.js"></script>
   <script src="../static/app/js/api/api.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-  <script src="../static/app/js/recipes.js"></script>
+  <script src="../static/app/js/recipes/index.js"></script>
+  <script src="../static/app/js/recipes/helpers.js"></script>
+  <script src="../static/app/js/recipes/creators.js"></script>
+  <script src="../static/app/js/recipes/recipes.js"></script>
 {% endblock %}

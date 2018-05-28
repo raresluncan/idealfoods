@@ -7,7 +7,7 @@ from django.db import IntegrityError
 from django.db.models import ProtectedError
 
 from app.models import Ingredient, Nutrient
-from app.configs import ModalConfig, IconConfig
+from app.configs import ModalConfig, IconConfig, FormConfig
 from app.forms import AddIngredientForm
 
 from app.builders.ingredients_builders import build_edit_ingredient_icon, \
@@ -27,11 +27,14 @@ def _get_remove_icon_html():
 
 @require_http_methods(["GET"])
 def list_ingredients(request):
+    add_ingredients_form_config = FormConfig(
+        form=AddIngredientForm()
+    )
 
     add_ingredient_modal_config = ModalConfig(
         modal_id='addIngredientModal',
         modal_class='add-ingredient-modal',
-        content=AddIngredientForm(),
+        content=[add_ingredients_form_config],
         title='Add ingredient',
         form_class='add-ingredient-form'
     )

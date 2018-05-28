@@ -1,0 +1,10 @@
+{% load app_tags %}
+
+<div class="select-wrapper">
+  <div class="select-title text-center">{{ config.wrapper_title }}</div>
+  <select class="selectpicker {{config.klass}}" title="{{config.title}}" type={{config.type}} data-live-search-placeholder="{{config.live_search_placeholder}}" data-live-search="{{config.live_search|lower}}" header="true" data-live-search-placeholder={{config.live_search_placeholder}}>
+    {% for object in config.queryset %}
+      <option value="{{object.id}}" data-tokens="{{object|get_field_value:config.options_field}}">{{object|get_field_value:config.options_field}}</option>
+    {% endfor %}
+  </select>
+</div>
