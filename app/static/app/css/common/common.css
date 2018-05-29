@@ -85,3 +85,7 @@ html body {
   color: #388E3C;
   cursor: pointer;
 }
+
+.button-glyph {
+  margin-right: 5px;
+}

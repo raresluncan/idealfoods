@@ -1,6 +1,7 @@
 import json
 
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render
 from django.http import JsonResponse
 
@@ -9,7 +10,7 @@ from app.configs import ModalConfig, SelectConfig, FormConfig
 from app.forms import AddRecipeForm
 from app.models import Ingredient, Recipe
 
-
+@login_required
 @require_http_methods(["GET"])
 def list_recipes(request):
     recipes_table_config = build_recipes_table()
@@ -40,6 +41,7 @@ def list_recipes(request):
         'add_recipe_modal_config': add_recipe_modal_config,
     })
 
+@login_required
 @require_http_methods(["GET"])
 def get_recipes_as_json(request):
     recipes = Recipe.objects.all()

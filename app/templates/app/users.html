@@ -1,0 +1,33 @@
+{% extends "app/layout.html" %}
+
+{% block head_content %}
+  {{ block.super }}
+  <link rel="stylesheet" href="../static/app/css/common/table.css">
+  <link rel="stylesheet" href="../static/app/css/common/accordion_table_xs.css">
+
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+  <div class="container page-header">
+    <h1 class="header-title col-xs-10 col-sm-8">All users <small class="header-subtitle hidden-xs hidden-sm">and their data</small>
+    </h1>
+    <div class="header-button col-xs-2 col-sm-4">
+      <button type="button" class="btn btn-success btn-md pull-right" data-toggle="modal" data-target="#addRecipeModal">
+        <span class="glyphicon glyphicon-plus btn-glyph"></span>
+        Add user
+      </button>
+    </div>
+  </div>
+  {% include 'app/partials/table/table.html' with table_config=users_table_config %}
+  {% include 'app/partials/modal.html' with config=add_user_modal_config %}
+
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="../static/app/js/common/common.js"></script>
+  <script src="../static/app/js/common/accordion_table_xs.js"></script>
+  <script src="../static/app/js/common/table.js"></script>
+  <script src="../static/app/js/api/api.js"></script>
+{% endblock %}
