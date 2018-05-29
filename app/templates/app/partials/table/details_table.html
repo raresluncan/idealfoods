@@ -1,0 +1,17 @@
+<div class="detail-table">
+  {% if config.title %}
+    <div class="table-title text-center row">
+      {{ config.title }}
+    </div>
+  {% endif %}
+  {% for key,value in config.data_dictionary.items %}
+    <div class="details-row row">
+      <div class="detail-name col-xs-6">
+        {{ key }}
+      </div>
+      <div class="detail-data col-xs-6">
+        {{ value }}
+      </div>
+    </div>
+  {% endfor %}
+</div>

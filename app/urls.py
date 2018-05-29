@@ -23,6 +23,8 @@ urlpatterns = [
 
     #users views
     url(r'^users/$', views.users.list_users, name="list_users"),
+    url(r'^users/(?P<user_id>[0-9]+)/$',
+        views.users.user_details, name="user_details"),
 
     #home view
     url(r'^$', views.home.home_get, name='home'),

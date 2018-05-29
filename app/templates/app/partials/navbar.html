@@ -13,15 +13,17 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        {% if request.user.level == 'website_admin' or request.user.level == 'super_admin' %}
-          <li class="selectible-nav-link"><a href="/ingredients/">Ingredients <span class="sr-only"></span></a></li>
-        {% endif %}
-        <li class="selectible-nav-link"><a href="/recipes/">Recipes</a></li>
-        {% if request.user.level == 'super_admin' %}
-          <li class="selectible-nav-link"><a href="/users/">Users</a></li>
-        {% endif %}
-      </ul>
+      {% if not request.user.is_anonymous %}
+        <ul class="nav navbar-nav">
+          {% if request.user.level == 'website_admin' or request.user.level == 'super_admin' %}
+            <li class="selectible-nav-link"><a href="/ingredients/">Ingredients <span class="sr-only"></span></a></li>
+          {% endif %}
+          <li class="selectible-nav-link"><a href="/recipes/">Recipes</a></li>
+          {% if request.user.level == 'super_admin' %}
+            <li class="selectible-nav-link"><a href="/users/">Users</a></li>
+          {% endif %}
+        </ul>
+      {% endif %}
       <ul class="nav navbar-nav navbar-right">
         {% if request.user.is_authenticated %}
           <li class="dropdown">

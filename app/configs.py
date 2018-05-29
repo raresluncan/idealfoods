@@ -84,3 +84,8 @@ class SelectConfig(ConfigInitChecker):
 class FormConfig(ConfigInitChecker):
     partial_path = "app/partials/form.html"
     form = None
+
+class DetailTableConfig(ConfigInitChecker):
+    partial_path = "app/partials/table/details_table.html"
+    data_dictionary = None
+    title = None
