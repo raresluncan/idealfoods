@@ -1,0 +1,36 @@
+{% extends "app/layout.html" %}
+{% load bootstrap3 %}
+
+{% block head_content %}
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="../../static/app/css/common/common.css">
+  <link rel="stylesheet" href="../../static/app/css/common/details_table.css">
+  <link rel="stylesheet" href="../../static/app/css/common/accordion_table_xs.css">
+  <link rel="stylesheet" href="../../static/app/css/users.css">
+
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+  <div class="container page-header">
+    <h1 class="header-title col-xs-12 col-sm-12">{% if request.user == user %} Your profile {% else %} {{ user.first_name }} {{user.last_name}}'s profile {% endif %}<small class="header-subtitle hidden-xs hidden-sm">and profile info</small>
+    </h1>
+  </div>
+  <div class="container user-profile">
+    <div class="well well-lg">
+      {% include 'app/partials/table/details_table.html' with config=user_details_table_config %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  {% bootstrap_javascript jquery=1 %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <script src="../../static/app/js/common/common.js"></script>
+  <script src="../../static/app/js/api/api.js"></script>
+  <script src="../../static/app/js/common/accordion_table_xs.js"></script>
+  <script src="../../static/app/js/common/table.js"></script>
+  <script src="../../static/app/js/api/api.js"></script>
+  <script src="../../static/app/js/users.js"></script>
+{% endblock %}

@@ -15,6 +15,7 @@ from django.db.models import ProtectedError
 from django.contrib.auth.models import AbstractBaseUser
 
 from managers.user import UserManager
+from collections import OrderedDict
 
 class Date(Model):
     """ Abstract class to store common attributes for all 'app' models
@@ -229,3 +230,18 @@ class User(AbstractBaseUser):
 
     def get_foreign_key_objects(self):
         pass
+
+    def to_dict(self):
+        data = OrderedDict()
+        data['email'] = self.email
+        data['surname'] = self.first_name
+        data['name'] = self.last_name
+        data['level'] = self.level
+        data['created'] = self.created_at
+        data['updated'] = self.updated_at
+        data['last_login'] = self.last_login
+
+        return data
+
+    def to_string(self):
+        return self.first_name + ' ' + self.last_name

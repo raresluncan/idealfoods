@@ -1,7 +1,10 @@
 {% extends "app/layout.html" %}
+{% load bootstrap3 %}
 
 {% block head_content %}
-  {{ block.super }}
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="../static/app/css/common/common.css">
   <link rel="stylesheet" href="../static/app/css/common/table.css">
   <link rel="stylesheet" href="../static/app/css/common/accordion_table_xs.css">
 
@@ -30,4 +33,5 @@
   <script src="../static/app/js/common/accordion_table_xs.js"></script>
   <script src="../static/app/js/common/table.js"></script>
   <script src="../static/app/js/api/api.js"></script>
+  <script src="../static/app/js/users.js"></script>
 {% endblock %}
