@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse, QueryDict
 from django.template import loader
@@ -9,7 +9,7 @@ from django.db.models import ProtectedError
 from app.models import Ingredient, Nutrient
 from app.configs import ModalConfig, IconConfig, FormConfig
 from app.forms import AddIngredientForm
-
+from app.helper_functions import is_super_admin, is_admin
 from app.builders.ingredients_builders import build_edit_ingredient_icon, \
     build_remove_ingredient_icon, build_cancel_ingredient_edit_icon, \
     build_confirm_ingredient_edit_icon, build_ingredients_table
@@ -25,6 +25,7 @@ def _get_remove_icon_html():
         render({'config': remove_icon})
 
 
+@login_required
 @require_http_methods(["GET"])
 def list_ingredients(request):
     add_ingredients_form_config = FormConfig(
@@ -46,7 +47,7 @@ def list_ingredients(request):
         'ingredients_table_config': ingredients_table_config,
     })
 
-
+@user_passes_test(is_admin, login_url='/login/')
 @require_http_methods(['POST'])
 def create_ingredients(request):
     add_ingredient_form = AddIngredientForm(request.POST)
@@ -72,7 +73,7 @@ def create_ingredients(request):
             }, status=400)
     return JsonResponse({'errors': add_ingredient_form.errors}, status=400)
 
-
+@user_passes_test(is_admin, login_url='/login/')
 @require_http_methods(['DELETE'])
 def delete_ingredients(request, ingredient_id):
     try:
@@ -85,7 +86,7 @@ def delete_ingredients(request, ingredient_id):
         return JsonResponse({}, status=422)
     return JsonResponse({}, status=204)
 
-
+@user_passes_test(is_admin, login_url='/login/')
 @require_http_methods(['POST'])
 def edit_ingredient(request, ingredient_id):
     edit_ingredient_form = AddIngredientForm(request.POST)

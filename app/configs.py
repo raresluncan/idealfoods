@@ -58,6 +58,7 @@ class TableConfig(ConfigInitChecker):
     edit_actions = []
 
     queryset = None
+    has_foreign_keys = True
 
     def set_column_configs(self, column_configs=[]):
         self.columns = column_configs

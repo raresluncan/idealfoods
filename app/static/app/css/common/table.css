@@ -96,6 +96,15 @@
   cursor: pointer;
 }
 
+.app-table .icon-details {
+  color: #00695c;
+}
+
+.app-table .icon-details:hover {
+  color: #00897b;
+  cursor: pointer;
+}
+
 .app-table .icon-edit:hover {
   color: #1565C0;
   cursor: pointer;

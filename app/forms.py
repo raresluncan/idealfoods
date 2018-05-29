@@ -1,6 +1,7 @@
-from django.forms import CharField, ModelForm
+from django.forms import CharField, ModelForm, Form, TextInput, PasswordInput
 from app.models import Nutrient, Ingredient, Recipe
-from django.core.validators import MaxLengthValidator, MinLengthValidator
+from django.core.validators import MaxLengthValidator, MinLengthValidator,\
+    EmailValidator
 
 class AddIngredientForm(ModelForm):
     """ a form for adding a new project.If the validation doesn't raise any
@@ -93,3 +94,33 @@ class AddRecipeForm(ModelForm):
                 'required': "Name is required for an ingredient."
             },
         }
+
+
+class LoginForm(Form):
+    """ Class to create the form used for authenticating """
+
+    email = CharField(
+        label='Email:',
+        max_length=64,
+        widget=TextInput(
+            attrs={
+                'type': "text",
+                'id': "inputEmail",
+                'class': "login_box",
+                'placeholder': "example@domain.com",
+                'autofocus': 'autofocus'
+            }
+        ),
+        validators=[EmailValidator()]
+    )
+    password = CharField(
+        label='Password:',
+        widget=PasswordInput(
+            attrs={
+                'type': "password",
+                'id': "inputPassword",
+                'class': "login_box",
+                'placeholder': "*******",
+            }
+        ),
+    )

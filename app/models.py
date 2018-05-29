@@ -12,10 +12,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.postgres.fields import JSONField
 from django.db.models import ProtectedError
+from django.contrib.auth.models import AbstractBaseUser
 
+from managers.user import UserManager
 
 class Date(Model):
-    """ Abstract class to store common attributes for all 'app' models.
+    """ Abstract class to store common attributes for all 'app' models
 
         Use: Inherit from this class if you want your data timestamped at
         creation and at each update. """
@@ -172,3 +174,58 @@ class Recipe(Date):
             ],
             'nutrients': self.nutrients.to_json()
         })
+
+
+class User(AbstractBaseUser):
+    """ defines a user model """
+
+    class Meta:
+        db_table = 'users'
+
+    REGULAR_USER_LEVEL = 'regular_user'
+    ADMIN_LEVEL = 'website_admin'
+    SUPERADMIN_LEVEL = 'super_admin'
+
+    USER_LEVELS = [
+        (REGULAR_USER_LEVEL, 'Regular User'),
+        (ADMIN_LEVEL, 'Company admin'),
+        (SUPERADMIN_LEVEL, 'Super Admin')
+    ]
+
+    USERNAME_FIELD = 'email'
+
+    REQUIRED_FIELDS = ['password', 'first_name', 'last_name']
+
+    objects = UserManager()
+
+    email = EmailField(max_length=64, unique=True)
+
+    password = CharField(max_length=256)
+
+    first_name = CharField(max_length=64)
+
+    last_name = CharField(max_length=64)
+
+    address = CharField(max_length=128, default=None, null=True, blank=True)
+
+    level = CharField(
+        max_length=32,
+        default=REGULAR_USER_LEVEL,
+        choices=USER_LEVELS
+    )
+
+    created_at = DateTimeField(auto_now_add=True)
+
+    updated_at = DateTimeField(auto_now=True)
+
+    def is_admin(self):
+        return self.level == self.ADMIN_LEVEL
+
+    def is_super_admin(self):
+        return self.level == self.SUPERADMIN_LEVEL
+
+    def is_regular_user(self):
+        return self.level == self.REGULAR_USER_LEVELx
+
+    def get_foreign_key_objects(self):
+        pass

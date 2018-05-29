@@ -110,3 +110,35 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'Europe/Bucharest'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'app.User'
+
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+    )
+
+LOGIN_URL = '/login'
+
+LOGOUT_REDIRECT_URL = '/'
